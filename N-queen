@@ -1,0 +1,86 @@
+#include <bits/stdc++.h>
+using namespace std;
+bool board[100][100];
+int n;
+
+
+bool isSafe(int x,int y)
+{
+/*
+ we have to check only in 3 direction.
+
+           N
+        W     E
+           S
+
+1) north - east
+2) north - west
+3) north
+
+*/
+
+    int i,j;
+    i=x,j=y;
+    while(i>=0 and i<n and j>=0 and j<n)
+    {
+        if(board[i--][j++]) return false;
+    }
+    i=x,j=y;
+    while(i>=0 and i<n and j>=0 and j<n)
+    {
+        if(board[i--][j--]) return false;
+    }
+     i=x,j=y;
+     while(i>=0 and i<n and j>=0 and j<n)
+    {
+        if(board[i--][j]) return false;
+    }
+    i=x,j=y;
+    return true;
+}
+
+
+void printBoard()
+{
+    cout << endl;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            cout <<( board[i][j] ? 1 : 0 )<<" ";
+        }
+        cout<<endl;
+    }
+    cout<<endl;
+}
+
+void f(int i)
+{
+    if(i>=n) { printBoard();
+    return ;
+    }
+
+    for(int j=0;j<n;j++)
+    {
+        if(isSafe(i,j))
+        {
+            board[i][j] = true ;
+            f(i+1);
+            board[i][j] = false ;
+        }
+    }
+}
+
+int main()
+{
+
+    cin >> n;
+    // empty all cells in the board
+    for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++)
+            board[i][j] = false ;
+
+    f(0);
+
+    return 0;
+}
