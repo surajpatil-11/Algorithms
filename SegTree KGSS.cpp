@@ -1,4 +1,6 @@
 // https://www.spoj.com/problems/KGSS/
+// Whenever you want to merge two nodes then first merge leaf node
+// In point update  first update the array then do as it is in query
 #include <bits/stdc++.h>
 using namespace std ;
 #define N 100005
