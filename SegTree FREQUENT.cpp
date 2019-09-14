@@ -99,3 +99,4 @@ int main()
 }
 
 // https://www.spoj.com/problems/FREQUENT/
+//https://github.com/jiteshsunhala/spoj-solutions/blob/master/FREQUENT.cpp
