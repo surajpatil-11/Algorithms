@@ -1,3 +1,4 @@
+//ref : gfg
 #include <bits/stdc++.h>
 using namespace std ;
 #define N 100005
@@ -103,3 +104,6 @@ signed main()
 
     return 0 ;
 }
+
+// https://www.spoj.com/problems/HORRIBLE/
+
