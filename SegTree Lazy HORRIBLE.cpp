@@ -29,9 +29,12 @@ int qry(int i,int s,int e)
     return ans ;
 }
 
+// simple hai yrr kisi particular node par aao toh us pr segtree  update krke uske children k lazy mai update krdo .Agar range se bahar ho
+// toh return krdo . Agar puri tarah range mai ho toh oos node k segtree ko update karo aur uske children k lazy ko update krdo.
+
 void updt( int i,int s,int e )
 {
-    st[i] += ( e-s+1 )*lazy[i] ;
+    st[i] += ( e-s+1 )*lazy[i] ; // first update node
     if( s != e )
     {
         lazy[2*i+1] += lazy[i] ;
@@ -39,10 +42,10 @@ void updt( int i,int s,int e )
     }
     lazy[i] = 0 ;
 
-    if( e < us or ue < s  )  // us s e ue
+    if( e < us or ue < s  )  // Out of range
         return ;
 
-    if( us <= s and e <= ue )
+    if( us <= s and e <= ue ) // fully in range
     {
         st[i] += ( e-s+1 )*val ;
          if( s != e )
@@ -52,10 +55,10 @@ void updt( int i,int s,int e )
         }
         return ;
     }
-    int m = (s+e)/2 ;
+    int m = (s+e)/2 ; // partially in range
     updt( 2*i+1 , s , m ) ;
     updt( 2*i+2 , m+1 ,e ) ;
-    st[i] = st[2*i+1] + st[2*i+2] ;
+    st[i] = st[2*i+1] + st[2*i+2] ; // don't forget
 }
 
 void display(int i,int s,int e)
