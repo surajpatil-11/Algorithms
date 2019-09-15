@@ -1,4 +1,7 @@
 //ref : gfg
+
+// Agar hum kisi node par aaye hai toh usko update karo chahe vo range mai ho ya na ho Query and Update dono mai
+
 #include <bits/stdc++.h>
 using namespace std ;
 #define N 100005
